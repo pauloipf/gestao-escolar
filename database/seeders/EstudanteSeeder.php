@@ -13,29 +13,28 @@ class EstudanteSeeder extends Seeder
         // Criação de um estudante de exemplo
         Estudante::create([
             'nome'     => 'Bernardo',
-            'email'    => 'bernardo@example.com',
+            'email'    => 'bernardo@mail.com',
             'password' => Hash::make('password'),
         ]);
 
         Estudante::create([
             'nome'     => 'Julia',
-            'email'    => 'julia@example.com',
+            'email'    => 'julia@mail.com',
             'password' => Hash::make('password'),
         ]);
 
         Estudante::create([
             'nome'     => 'Paulo',
-            'email'    => 'paulo@example.com',
+            'email'    => 'paulo@mail.com',
             'password' => Hash::make('password'),
         ]);
 
         Estudante::create([
             'nome'     => 'João Pedro',
-            'email'    => 'joaopedro@example.com',
+            'email'    => 'joaopedro@mail.com',
             'password' => Hash::make('password'),
         ]);
 
-        // Se você tiver uma factory definida para Estudante, pode criar mais registros:
         Estudante::factory(10)->create();
     }
 }

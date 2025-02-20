@@ -34,8 +34,5 @@ class ProfessorSeeder extends Seeder
             'email'        => 'vilson@ifsc.edu.br',
             'password'     => Hash::make('password'),
         ]);
-
-        // Se tiver uma factory definida para Professor, pode criar mais registros:
-        // Professor::factory(10)->create();
     }
 }

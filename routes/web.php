@@ -8,7 +8,7 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\MatriculaController;
 
 
-// Rota pública inicial (pode ser um welcome ou redirecionar para login)
+// Rota pública inicial (redireciona para login)
 Route::get('/', function () {
     return view('login');
 });
@@ -33,5 +33,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('matriculas', MatriculaController::class)->only(['index', 'store', 'destroy']);
 });
 
-// Rotas de autenticação (gerenciadas por Breeze, Fortify, etc.)
+// Rotas de autenticação (gerenciadas por Breeze)
 require __DIR__ . '/auth.php';

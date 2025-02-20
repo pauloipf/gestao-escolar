@@ -60,6 +60,16 @@ ou
 
 - No Windows: Utilize o painel de controle do MySQL ou o XAMPP para iniciar o serviço MySQL.
 
+## Comandos para rodar o Node.js para login
+1. 
+    ```bash
+    npm run build
+    ```
+2. 
+    ```bash
+    npm run dev
+    ```
+
 ## Comandos Artisan para Rodar com Seeds
 
 1. Limpe e recache as configurações (opcional, mas recomendado):

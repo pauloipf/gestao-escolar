@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
             ProfessorSeeder::class,
             UserSeeder::class,
             CursoSeeder::class,
-            // Adicione outros seeders conforme necessário (ex: CursosSeeder, TurmasSeeder, etc.)
+            
         ]);
     }
 }

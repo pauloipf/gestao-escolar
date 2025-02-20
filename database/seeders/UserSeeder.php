@@ -10,20 +10,43 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
+        
+
+        // Usuários Estudantes
+        User::create([
+            'name'     => 'Bernardo',
+            'email'    => 'bernardo@mail.com',
+            'password' => Hash::make('estudante'),
+            'tipo'     => 'estudante',
+        ]);
+
+        User::create([
+            'name'     => 'Julia',
+            'email'    => 'julia@mail.com',
+            'password' => Hash::make('estudante'),
+            'tipo'     => 'estudante',
+        ]);
+
+        User::create([
+            'name'     => 'Paulo',
+            'email'    => 'paulo@mail.com',
+            'password' => Hash::make('estudante'),
+            'tipo'     => 'estudante',
+        ]);
+
+        User::create([
+            'name'     => 'João Pedro',
+            'email'    => 'joaopedro@mail.com',
+            'password' => Hash::make('estudante'),
+            'tipo'     => 'estudante',
+        ]);
+
         // Usuário Professor
         User::create([
             'name'     => 'Professor Exemplo',
             'email'    => 'professor@ifsc.edu.br',
             'password' => Hash::make('professor'),
-            'tipo'     => 'professor', // supondo que você tenha esse campo na tabela users
-        ]);
-
-        // Usuário Estudante
-        User::create([
-            'name'     => 'Estudante Exemplo',
-            'email'    => 'estudante@example.com',
-            'password' => Hash::make('estudante'),
-            'tipo'     => 'estudante',
+            'tipo'     => 'professor',
         ]);
     }
 }
