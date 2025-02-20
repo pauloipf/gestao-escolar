@@ -8,27 +8,50 @@ use Illuminate\Support\Facades\Hash;
 
 class EstudanteController extends Controller
 {
+    // Lista todos os estudantes
     public function index()
     {
         $estudantes = Estudante::all();
         return view('estudantes.index', compact('estudantes'));
     }
 
+    // Exibe o formulário para criação de um novo estudante
     public function create()
     {
         return view('estudantes.create');
     }
 
+    // Armazena um novo estudante no banco de dados
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'nome'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:estudantes,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Criptografa a senha antes de armazenar
+        $validated['password'] = Hash::make($validated['password']);
+
+        Estudante::create($validated);
+
+        return redirect()->route('estudantes.index')
+                         ->with('success', 'Estudante criado com sucesso!');
+    }
+
+    // Exibe os detalhes de um estudante específico
     public function show(Estudante $estudante)
     {
         return view('estudantes.show', compact('estudante'));
     }
 
+    // Exibe o formulário para edição do estudante
     public function edit(Estudante $estudante)
     {
         return view('estudantes.edit', compact('estudante'));
     }
 
+    // Atualiza os dados do estudante no banco de dados
     public function update(Request $request, Estudante $estudante)
     {
         $rules = [
@@ -36,7 +59,7 @@ class EstudanteController extends Controller
             'email' => 'required|email|unique:estudantes,email,' . $estudante->id,
         ];
 
-        // Se o usuário deseja atualizar a senha
+        // Caso o usuário deseje atualizar a senha
         if ($request->filled('password')) {
             $rules['password'] = 'required|string|min:6|confirmed';
         }
@@ -45,22 +68,20 @@ class EstudanteController extends Controller
 
         if ($request->filled('password')) {
             $validated['password'] = Hash::make($validated['password']);
-        } else {
-            // Removendo o campo password para não sobrescrever com null
-            unset($validated['password']);
         }
 
         $estudante->update($validated);
 
         return redirect()->route('estudantes.index')
-            ->with('success', 'Estudante atualizado com sucesso!');
+                         ->with('success', 'Estudante atualizado com sucesso!');
     }
 
-
+    // Remove o estudante do banco de dados
     public function destroy(Estudante $estudante)
     {
         $estudante->delete();
 
-        return redirect()->route('estudantes.index');
+        return redirect()->route('estudantes.index')
+                         ->with('success', 'Estudante excluído com sucesso!');
     }
 }
